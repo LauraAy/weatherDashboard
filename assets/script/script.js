@@ -1,21 +1,5 @@
 let searches = JSON.parse(localStorage.getItem('searches')) || []
 
-// const renderItems = _ => {
-//   document.getElementById('saved-locations').innerHTML = ''
-//   for (let i = 0; i < locations.length; i++) {
-//     let searchElem = document.createElement('div')
-//     searchElem.innerHTML = `  
-
-//       <div class="card">
-//         <span class="card-title">${searches[i].location}</span>
-//       </div>
-
-//         `
-//     document.getElementById('saved-searches').append(searchElem)
-//   }
-//   document.getElementById('city').textContent = ' '
-// }
-
 // event listener for search button
 document.getElementById('searchCity').addEventListener('click', event => {
   event.preventDefault()
@@ -82,14 +66,14 @@ document.getElementById('searchCity').addEventListener('click', event => {
       for (var x = 0; x < searches.length; x++) {
         let searchElem = document.createElement('div')
         searchElem.innerHTML = `
-          <div class="card>
+          <div class="card">
             <div class="card-content">
-            ${searches[x]}
+            <div>${searches[x].location}</div>
             </div>
           </div>
           `
         document.getElementById('saved-searches').append(searchElem) 
-        console.log(searches[x])
+        console.log(searches[x].location)
         }
       }
       renderItems()
@@ -99,7 +83,6 @@ document.getElementById('searchCity').addEventListener('click', event => {
     })
 })
 
-console.log(searches[i])
 
 // for (var i = 0; i < searches.length; i++) {
 //   document.getElementById('saved-searches').innerHTML = `
