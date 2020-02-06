@@ -11,7 +11,7 @@ document.getElementById('searchCity').addEventListener('click', event => {
   localStorage.setItem('searches', JSON.stringify(searches))
 
   
-  fetch(`http://api.weatherapi.com/v1/forecast.json?key=ea4d3d5c304c48499f2204108200502&q=${document.getElementById('city').value}&days=5`)
+  fetch(`https://api.weatherapi.com/v1/forecast.json?key=ea4d3d5c304c48499f2204108200502&q=${document.getElementById('city').value}&days=5`)
     .then(r => r.json())
     .then(({ location, current, forecast, condition }) => {
   
@@ -77,11 +77,64 @@ document.getElementById('searchCity').addEventListener('click', event => {
         }
       }
       renderItems()
-     
-      
-   
     })
 })
+
+// document.getElementsByClassName('saved-city').addEventListener('click', event => {
+//   event.preventDefault()
+//   getItem(event.target.value)
+//   fetch(`https://api.weatherapi.com/v1/forecast.json?key=ea4d3d5c304c48499f2204108200502&q=${event.target.value}&days=5`)
+//     .then(r => r.json())
+//     .then(({ location, current, forecast, condition }) => {
+
+//       let cDate = moment(`${forecast.forecastday[0].date}`, 'YYYY-MM-DD').format('MMM-DD-YYYY');
+//       let currentElem = document.createElement('div')
+//       currentElem.innerHTML = `
+//         <div class="card  z-depth-2">
+//           <div class="card-content">
+//           <div class="row">
+//             <div class="col s6">
+//               <h5>${location.name}</h5>
+//               <h6>${cDate}</h6>
+//               <img src=${current.condition.icon}></img>
+//             </div>
+//             <div class="col s6">
+//               <div>Temp: ${current.temp_f}f</div>
+//               <div>${current.condition.text}</div>
+//               <div>Wind: ${current.wind_mph}mph</div>
+//               <div>Humidity: ${current.humidity}mph</div>
+//               <div id="uv">UV Index: ${current.uv}mph</div>
+//             </div>
+//           </div>
+//           </div>
+//         </div>
+//       `
+//       document.getElementById('displayCurrent').append(currentElem)
+
+//       for (var i = 1; i < 5; i++) {
+
+//         let forecastInfo = forecast.forecastday[i]
+//         let daily = forecastInfo.day
+//         let date = moment(`${forecastInfo.date}`, 'YYYY-MM-DD').format('MMM-DD-YYYY');
+
+//         let weatherElem = document.createElement('div')
+//         weatherElem.innerHTML = `
+        
+//         <div class="card light-blue lighten-5 z-depth-2 col">
+//           <div class="card-content">
+//           <div class="section">
+//           <h6>${date}</h6>
+//           <div>High: ${daily.maxtemp_f}</div>
+//           <div>Low: ${daily.mintemp_f}</div>
+//           <div>Humidity: ${daily.avghumidity}</div>
+//           </div>
+//         </div>
+//        `
+//         document.getElementById('displayForecast').append(weatherElem)
+//       }
+
+
+// })
 
 
 // for (var i = 0; i < searches.length; i++) {
